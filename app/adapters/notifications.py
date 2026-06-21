@@ -27,6 +27,7 @@ def notify_email_order_placed(order):
     to_addresses = [
         contact.email
         for contact in order.instance.contacts_for(ContactType.FULFILMENT)
+        if contact.email
     ]
     if not to_addresses:
         return None
