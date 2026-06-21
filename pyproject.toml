@@ -1,0 +1,42 @@
+[project]
+name = "boost-support-engineer-test"
+version = "1.0.0"
+description = "Take-home technical test for the Boost Software Support Engineer role"
+requires-python = ">=3.11,<3.12"
+dependencies = [
+  "flask>=3.1,<3.2",
+  "flask-mailman>=1.1,<1.2",
+]
+
+[dependency-groups]
+dev = [
+  "pytest>=8.0",
+  "ruff>=0.6",
+]
+
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools]
+packages = ["app", "app.adapters", "app.domain", "app.orders"]
+
+[tool.ruff]
+line-length = 99
+target-version = "py311"
+
+[tool.ruff.format]
+quote-style = "single"
+
+[tool.ruff.lint]
+select = ["A", "E", "F", "Q"]
+
+[tool.ruff.lint.flake8-quotes]
+inline-quotes = "single"
+
+[tool.ruff.lint.per-file-ignores]
+# Allow import violations in __init__.py
+"**/__init__.py" = ["E402", "F401"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
