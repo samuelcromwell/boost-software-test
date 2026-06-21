@@ -1,0 +1,5 @@
+- Add structured logging when an order-notification recipient is skipped because their email is blank, so support can diagnose this from logs without reading code.
+- Add a validation rule that prevents saving fulfilment contacts with an empty email address, or clearly marks them as inactive until setup is complete.
+- Add an integration-style test around `/orders/place-sample` that asserts the notification side effect, not just the helper functions.
+- Return or log an explicit outcome from `notify_email_order_placed()` when no valid recipients remain, instead of silently doing nothing.
+- Consider making `notify_email()` drop obviously invalid blank addresses defensively, so one incomplete recipient cannot block other callers in future.
